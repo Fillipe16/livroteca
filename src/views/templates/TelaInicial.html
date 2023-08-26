@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catálogo de Livros</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Catálogo de Livros</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Ano de Publicação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livro in livros %}
+                <tr>
+                    <td> {{livro.titulo}} </td>
+                    <td> {{livro.autor}} </td>
+                    <td> {{livro.genero}} </td>
+                    <td> {{livro.anoDePublicacao}} </td>
+
+
+                    <td> <a href = {{ url_for('deletarLivro', id = livro.id )}} >Excluir</a> </td>
+                    <td> <a href = {{ url_for('exibeTelaDeEditar', id = livro.id )}} >Editar</a> </td>
+                
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <a href={{ url_for('telaCadastroDeLivro') }} class="btn btn-primary mb-4">Cadastrar Novo Livro</a>
+</div>
+
+</body>
+</html>
